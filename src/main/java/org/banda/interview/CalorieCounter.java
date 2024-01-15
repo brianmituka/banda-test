@@ -9,7 +9,7 @@ public class CalorieCounter {
 
   public static void main(String[] args) throws IOException {
     PriorityQueue<Integer> elfTotalCalories = getHighestCaloriesCount("file.txt");
-    Integer topThreeTotal = getTotalTopKElfCalories(elfTotalCalories, 3);
+    Integer topThreeTotal = getTotalTopElfCalories(elfTotalCalories, 3);
     System.out.println(("Top 3 elf totals:: " + topThreeTotal));
     System.out.println("Highest Calories Total :: " + elfTotalCalories.poll());
   }
@@ -51,12 +51,12 @@ public class CalorieCounter {
    * @return total of the top K elements
    */
 
-  public static Integer getTotalTopKElfCalories( PriorityQueue<Integer> ranking, int k){
-    if (k > ranking.size()){
+  public static Integer getTotalTopElfCalories( PriorityQueue<Integer> ranking, int top){
+    if (top > ranking.size()){
       return 0;
     }
     int sum = 0;
-    for (int i = 0; i <k ; i++) {
+    for (int i = 0; i <top ; i++) {
       sum+= ranking.poll();
     }
     return sum;
